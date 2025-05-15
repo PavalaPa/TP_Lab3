@@ -26,9 +26,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.buttonOpenFile = new System.Windows.Forms.Button();
             this.PopylationGrid = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -50,6 +50,7 @@
             this.buttonOpenFile.TabIndex = 0;
             this.buttonOpenFile.Text = "Открыть файл";
             this.buttonOpenFile.UseVisualStyleBackColor = true;
+            this.buttonOpenFile.Click += new System.EventHandler(this.buttonOpenFile_Click);
             // 
             // PopylationGrid
             // 
@@ -64,16 +65,16 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(415, 75);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(493, 300);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
@@ -84,9 +85,9 @@
             this.labelMaxReductionPopulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.985074F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelMaxReductionPopulation.Location = new System.Drawing.Point(27, 394);
             this.labelMaxReductionPopulation.Name = "labelMaxReductionPopulation";
-            this.labelMaxReductionPopulation.Size = new System.Drawing.Size(522, 20);
+            this.labelMaxReductionPopulation.Size = new System.Drawing.Size(609, 20);
             this.labelMaxReductionPopulation.TabIndex = 3;
-            this.labelMaxReductionPopulation.Text = "За поледние 15 лет численность снизилась больше всего в:";
+            this.labelMaxReductionPopulation.Text = "За поледние 15 лет численность снизилась больше всего в субъекте: ";
             // 
             // labelMinReductionPopulation
             // 
@@ -94,9 +95,9 @@
             this.labelMinReductionPopulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.985074F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelMinReductionPopulation.Location = new System.Drawing.Point(27, 429);
             this.labelMinReductionPopulation.Name = "labelMinReductionPopulation";
-            this.labelMinReductionPopulation.Size = new System.Drawing.Size(524, 20);
+            this.labelMinReductionPopulation.Size = new System.Drawing.Size(611, 20);
             this.labelMinReductionPopulation.TabIndex = 4;
-            this.labelMinReductionPopulation.Text = "За поледние 15 лет численность снизилась меньше всего в:";
+            this.labelMinReductionPopulation.Text = "За поледние 15 лет численность снизилась меньше всего в субъекте: ";
             // 
             // buttonPredictPopulation
             // 
