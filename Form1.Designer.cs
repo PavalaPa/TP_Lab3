@@ -40,6 +40,7 @@
             this.buttonPopulation.TabIndex = 0;
             this.buttonPopulation.Text = "Посмотреть численность населения";
             this.buttonPopulation.UseVisualStyleBackColor = false;
+            this.buttonPopulation.Click += new System.EventHandler(this.buttonPopulation_Click);
             // 
             // Form1
             // 

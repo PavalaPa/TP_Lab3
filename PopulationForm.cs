@@ -9,16 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TP_Lab3 {
-    public partial class Form1 : Form {
-        public Form1()
+    public partial class PopulationForm : Form {
+        public PopulationForm()
         {
             InitializeComponent();
-        }
-
-        private void buttonPopulation_Click(object sender, EventArgs e)
-        {
-            Form form = new PopulationForm();
-            form.ShowDialog();
         }
     }
 }
