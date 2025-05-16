@@ -27,6 +27,7 @@ namespace TP_Lab3
             //Очистка таблицы перед добавлением данных
             Expenses_dataGridView.Columns.Clear();
             Expenses_dataGridView.Rows.Clear();
+            Min_max_comboBox.Items.Clear();
 
             if (Expenses_openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -43,6 +44,11 @@ namespace TP_Lab3
                 {
                     string[] fields = lines[i].Split(';');
                     Expenses_dataGridView.Rows.Add(fields);
+                }
+                //Добавление категорий в combobox
+                for (int i = 1; i < columns.Length; i++)
+                {
+                    Min_max_comboBox.Items.Add(columns[i]);
                 }
             }
         }
@@ -79,6 +85,35 @@ namespace TP_Lab3
             }
         }
 
+        //Функция поиска максимумальной и минимальной разницы
+        private void CalculateDifference()
+        {
+            if (Min_max_comboBox != null)
+            {
+                double previous_field = 0;
+                double MaxDiff = 0;
+                double MinDiff = 1000000;
+                int category_id = Expenses_dataGridView.Columns[Min_max_comboBox.SelectedItem.ToString()].Index;
+                for (int i = 1; i < Expenses_dataGridView.Rows.Count - 1; i++)
+                {
+                    double curr_field = Convert.ToDouble(Expenses_dataGridView.Rows[i].Cells[category_id].Value);
+                    if (previous_field != 0)
+                    {
+                        if ((curr_field - previous_field) / previous_field * 100 > MaxDiff)
+                        {
+                            MaxDiff = (curr_field - previous_field) / previous_field * 100;
+                        }
+                        if ((curr_field - previous_field) / previous_field * 100 < MinDiff)
+                        {
+                            MinDiff = (curr_field - previous_field) / previous_field * 100;
+                        }
+                    }
+                    previous_field = curr_field;
+                }
+                MessageBox.Show($"Категория: {Min_max_comboBox.SelectedItem}\n" + $"Максимальная разница: {MaxDiff:F2}%\n" + $"Минимальная разница: {MinDiff:F2}%");
+            }
+        }
+
         private void Expenses_openFileDialog_FileOk(object sender, CancelEventArgs e)
         {
 
@@ -94,6 +129,11 @@ namespace TP_Lab3
         private void chart1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Min_max_button_Click(object sender, EventArgs e)
+        {
+            CalculateDifference();
         }
     }
 }
