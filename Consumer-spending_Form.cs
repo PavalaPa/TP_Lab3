@@ -114,8 +114,49 @@ namespace TP_Lab3
             }
         }
 
-        private void Expenses_openFileDialog_FileOk(object sender, CancelEventArgs e)
+        //Функция прогнозирования при помощи экстраполяции со скользящей средней
+        private void Predict()
         {
+            chart2.Series.Clear();
+            chart2.ChartAreas.Clear();
+            chart2.ChartAreas.Add("Chart");
+
+            int N = Convert.ToInt32(N_numericUpDown.Value);
+            if (N == 0 || Expenses_dataGridView.Rows.Count < N)
+            {
+                return;
+            }
+
+            for (int i = 1; i < Expenses_dataGridView.Columns.Count; i++)
+            {
+                string categoryName = Expenses_dataGridView.Columns[i].HeaderText;
+                List<double> fields = new List<double>(); //Список значений расходов по категории
+                //Заполняем список расходами
+                for (int j = 0; j < Expenses_dataGridView.Rows.Count - 1; j++)
+                {
+                    fields.Add(Convert.ToDouble(Expenses_dataGridView.Rows[j].Cells[i].Value));
+                }
+
+                List<double> predictions = new List<double>(); //Список прогнозов на следующие года
+                //Заполняем список прогнозов
+                for (int j = 0; j < N; j++)
+                {
+                    double average = fields.Skip(fields.Count - N).Take(N).Average();
+                    predictions.Add(average);
+                    fields.Add(average);
+                }
+
+                Series predictions_series = new Series($"{categoryName}");
+                predictions_series.ChartType = SeriesChartType.Line;
+                predictions_series.BorderWidth = 3;
+
+                for (int j = 0; j < N; j++)
+                {
+                    predictions_series.Points.AddXY(2024 + j + 1, predictions[j]);
+                }
+
+                chart2.Series.Add(predictions_series);
+            }
 
         }
 
@@ -126,14 +167,14 @@ namespace TP_Lab3
             Build_Chart();
         }
 
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Min_max_button_Click(object sender, EventArgs e)
         {
             CalculateDifference();
+        }
+
+        private void Predict_button_Click(object sender, EventArgs e)
+        {
+            Predict();
         }
     }
 }
