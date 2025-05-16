@@ -26,13 +26,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.buttonPopulation = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // buttonPopulation
+            // 
+            this.buttonPopulation.BackColor = System.Drawing.Color.Sienna;
+            this.buttonPopulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.98507F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonPopulation.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonPopulation.Location = new System.Drawing.Point(309, 39);
+            this.buttonPopulation.Name = "buttonPopulation";
+            this.buttonPopulation.Size = new System.Drawing.Size(188, 117);
+            this.buttonPopulation.TabIndex = 0;
+            this.buttonPopulation.Text = "Посмотреть численность населения";
+            this.buttonPopulation.UseVisualStyleBackColor = false;
+            this.buttonPopulation.Click += new System.EventHandler(this.buttonPopulation_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonPopulation);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button buttonPopulation;
     }
 }
 

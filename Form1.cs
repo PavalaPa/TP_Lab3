@@ -14,5 +14,11 @@ namespace TP_Lab3 {
         {
             InitializeComponent();
         }
+
+        private void buttonPopulation_Click(object sender, EventArgs e)
+        {
+            Form form = new PopulationForm();
+            form.ShowDialog();
+        }
     }
 }
