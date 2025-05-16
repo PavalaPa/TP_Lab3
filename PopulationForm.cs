@@ -116,6 +116,7 @@ namespace TP_Lab3 {
             {
                 ChartType = SeriesChartType.Line,
                 BorderColor = Color.Green,
+                Color = Color.Green,
                 MarkerStyle = MarkerStyle.Circle,
                 MarkerSize = 3,
                 //IsValueShownAsLabel = true
@@ -150,7 +151,7 @@ namespace TP_Lab3 {
             chartPopularion.ChartAreas[0].AxisX.Title = "Год";
             chartPopularion.ChartAreas[0].AxisY.Title = "Численность населения";
             chartPopularion.Titles.Clear();
-            chartPopularion.Titles.Add("График зависимости численности населения от года");
+            chartPopularion.Titles.Add("График зависимости численности населения от года " + region);
             chartPopularion.Legends.Clear();
         }
         private void buttonPredictPopulation_Click(object sender, EventArgs e)
@@ -158,10 +159,60 @@ namespace TP_Lab3 {
             if (comboBoxSelectRegion.Items.Count < 0) return;
             AddChartPopulation(comboBoxSelectRegion.Text);
         }
+        private void ForecastPopulation(Chart chart, int forecastYears = 15, int windowSize = 15)
+        {
+            if (chart.Series.IndexOf("Прогноз") != -1)
+            {
+                chart.Series.Remove(chart.Series["Прогноз"]);
+            }
 
+            if (chart.Series.Count == 0 || chart.Series[0].Points.Count < windowSize)
+            {
+                MessageBox.Show("Недостаточно данных для прогноза.");
+                return;
+            }
+
+            //получение данных
+            Series originalSeries = chart.Series[0];
+            List<double> values = originalSeries.Points.Select(p => p.YValues[0]).ToList();
+            List<int> years = originalSeries.Points.Select(p => (int)p.XValue).ToList();
+
+            int lastYear = years.Last();
+            double lastValue = values.Last();
+            Series forecastSeries = new Series("Прогноз")
+            {
+                ChartType = SeriesChartType.Line,
+                Color = Color.Red,
+                BorderDashStyle = ChartDashStyle.Dash,
+                MarkerStyle = MarkerStyle.Circle,
+                MarkerSize = 5,
+                BorderWidth = 2,
+                IsValueShownAsLabel = true
+            };
+
+            forecastSeries.Points.AddXY(lastYear, lastValue);
+
+            for (int i = 0; i < forecastYears; i++) //скользящая средняя
+            {
+                var lastValues = values.Skip(values.Count - windowSize).ToList();
+                double forecast = Math.Round(lastValues.Average(), MidpointRounding.AwayFromZero);
+
+                lastYear += 1;
+                values.Add(forecast);
+                forecastSeries.Points.AddXY(lastYear, forecast);
+            }
+
+            chart.Series.Add(forecastSeries);
+
+            if (chart.Titles.Count > 0)
+            {
+                var originalTitle = chart.Titles[0].Text;
+                chart.Titles[0].Text += " (с прогнозом)";
+            }
+        }
         private void buttonForecastPopulation_Click(object sender, EventArgs e)
         {
-
+            ForecastPopulation(chartPopularion, (int)numericUpDownPredict.Value, (int)numericUpDownPredict.Value);
         }
     }
 }
