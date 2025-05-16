@@ -34,8 +34,10 @@
             this.chartPopularion = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.labelMaxReductionPopulation = new System.Windows.Forms.Label();
             this.labelMinReductionPopulation = new System.Windows.Forms.Label();
-            this.buttonPredictPopulation = new System.Windows.Forms.Button();
+            this.buttonShowChart = new System.Windows.Forms.Button();
             this.numericUpDownPredict = new System.Windows.Forms.NumericUpDown();
+            this.comboBoxSelectRegion = new System.Windows.Forms.ComboBox();
+            this.buttonForecastPopulation = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PopylationGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPopularion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPredict)).BeginInit();
@@ -75,7 +77,7 @@
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chartPopularion.Series.Add(series2);
-            this.chartPopularion.Size = new System.Drawing.Size(493, 300);
+            this.chartPopularion.Size = new System.Drawing.Size(808, 300);
             this.chartPopularion.TabIndex = 2;
             this.chartPopularion.Text = "chart1";
             // 
@@ -99,33 +101,55 @@
             this.labelMinReductionPopulation.TabIndex = 4;
             this.labelMinReductionPopulation.Text = "За поледние 15 лет численность снизилась меньше всего в субъекте: ";
             // 
-            // buttonPredictPopulation
+            // buttonShowChart
             // 
-            this.buttonPredictPopulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.985074F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonPredictPopulation.Location = new System.Drawing.Point(415, 32);
-            this.buttonPredictPopulation.Name = "buttonPredictPopulation";
-            this.buttonPredictPopulation.Size = new System.Drawing.Size(184, 36);
-            this.buttonPredictPopulation.TabIndex = 5;
-            this.buttonPredictPopulation.Text = "Прогнозировать на";
-            this.buttonPredictPopulation.UseVisualStyleBackColor = true;
-            this.buttonPredictPopulation.Click += new System.EventHandler(this.buttonPredictPopulation_Click);
+            this.buttonShowChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.985074F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonShowChart.Location = new System.Drawing.Point(415, 32);
+            this.buttonShowChart.Name = "buttonShowChart";
+            this.buttonShowChart.Size = new System.Drawing.Size(221, 36);
+            this.buttonShowChart.TabIndex = 5;
+            this.buttonShowChart.Text = "Показать график по";
+            this.buttonShowChart.UseVisualStyleBackColor = true;
+            this.buttonShowChart.Click += new System.EventHandler(this.buttonPredictPopulation_Click);
             // 
             // numericUpDownPredict
             // 
             this.numericUpDownPredict.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.98507F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDownPredict.Location = new System.Drawing.Point(605, 33);
+            this.numericUpDownPredict.Location = new System.Drawing.Point(1113, 32);
             this.numericUpDownPredict.Name = "numericUpDownPredict";
             this.numericUpDownPredict.Size = new System.Drawing.Size(110, 33);
             this.numericUpDownPredict.TabIndex = 6;
+            // 
+            // comboBoxSelectRegion
+            // 
+            this.comboBoxSelectRegion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.98507F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxSelectRegion.FormattingEnabled = true;
+            this.comboBoxSelectRegion.Location = new System.Drawing.Point(642, 33);
+            this.comboBoxSelectRegion.Name = "comboBoxSelectRegion";
+            this.comboBoxSelectRegion.Size = new System.Drawing.Size(225, 33);
+            this.comboBoxSelectRegion.TabIndex = 7;
+            // 
+            // buttonForecastPopulation
+            // 
+            this.buttonForecastPopulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.985074F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonForecastPopulation.Location = new System.Drawing.Point(915, 31);
+            this.buttonForecastPopulation.Name = "buttonForecastPopulation";
+            this.buttonForecastPopulation.Size = new System.Drawing.Size(192, 36);
+            this.buttonForecastPopulation.TabIndex = 8;
+            this.buttonForecastPopulation.Text = "Прогнозировать на";
+            this.buttonForecastPopulation.UseVisualStyleBackColor = true;
+            this.buttonForecastPopulation.Click += new System.EventHandler(this.buttonForecastPopulation_Click);
             // 
             // PopulationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(960, 466);
+            this.ClientSize = new System.Drawing.Size(1235, 466);
+            this.Controls.Add(this.buttonForecastPopulation);
+            this.Controls.Add(this.comboBoxSelectRegion);
             this.Controls.Add(this.numericUpDownPredict);
-            this.Controls.Add(this.buttonPredictPopulation);
+            this.Controls.Add(this.buttonShowChart);
             this.Controls.Add(this.labelMinReductionPopulation);
             this.Controls.Add(this.labelMaxReductionPopulation);
             this.Controls.Add(this.chartPopularion);
@@ -148,7 +172,9 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartPopularion;
         private System.Windows.Forms.Label labelMaxReductionPopulation;
         private System.Windows.Forms.Label labelMinReductionPopulation;
-        private System.Windows.Forms.Button buttonPredictPopulation;
+        private System.Windows.Forms.Button buttonShowChart;
         private System.Windows.Forms.NumericUpDown numericUpDownPredict;
+        private System.Windows.Forms.ComboBox comboBoxSelectRegion;
+        private System.Windows.Forms.Button buttonForecastPopulation;
     }
 }

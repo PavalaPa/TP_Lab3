@@ -77,6 +77,14 @@ namespace TP_Lab3 {
                 }
             }
         }
+        private void LoadDataInComboBox(ComboBox comboBox, DataGridView dataGridView) 
+        {
+            for (int col = 0; col <= dataGridView.ColumnCount - 1; col++)
+            {
+                if (dataGridView.Rows[0].Cells[col].Value == null) return;
+                comboBox.Items.Add(dataGridView.Columns[col].HeaderCell.Value.ToString());
+            }
+        }
         private void buttonOpenFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -95,13 +103,65 @@ namespace TP_Lab3 {
                 {
                     MessageBox.Show("Невозможно открыть выбранный файл", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                LoadDataInComboBox(comboBoxSelectRegion, PopylationGrid);
             }
         }
+        private void AddChartPopulation(string region)
+        {
+            chartPopularion.ChartAreas.Clear();
+            chartPopularion.Series.Clear();
+            chartPopularion.ChartAreas.Add(new ChartArea());
+            int regNum = -1;
+            Series mainSeries = new Series()
+            {
+                ChartType = SeriesChartType.Line,
+                BorderColor = Color.Green,
+                MarkerStyle = MarkerStyle.Circle,
+                MarkerSize = 3,
+                //IsValueShownAsLabel = true
+            };
+            //находим среди хеддера нужный индекс нужного региона
+            for (int col = 0; col < PopylationGrid.ColumnCount; col++)
+            {
+                if (PopylationGrid.Columns[col].HeaderText == region)
+                {
+                    regNum = col; break;
+                }
+            }
+            if (regNum == -1)
+            {
+                MessageBox.Show("Регион не найден в таблице.");
+                return;
+            }
+            //Добавляем график
+            for (int row = 0; row < PopylationGrid.RowCount; row++)
+            {
+                var yearCell = PopylationGrid.Rows[row].HeaderCell.Value?.ToString();
+                var valueCell = PopylationGrid.Rows[row].Cells[regNum].Value?.ToString();
 
+                if (int.TryParse(yearCell, out int year) && double.TryParse(valueCell, out double population))
+                {
+                    mainSeries.Points.AddXY(year, population);
+                }
+            }
+
+            //mainSeries.Points.AddXY();
+            chartPopularion.Series.Add(mainSeries);
+            chartPopularion.ChartAreas[0].AxisX.Title = "Год";
+            chartPopularion.ChartAreas[0].AxisY.Title = "Численность населения";
+            chartPopularion.Titles.Clear();
+            chartPopularion.Titles.Add("График зависимости численности населения от года");
+            chartPopularion.Legends.Clear();
+        }
         private void buttonPredictPopulation_Click(object sender, EventArgs e)
         {
-            if (numericUpDownPredict.Value < 0) return;
-            
+            if (comboBoxSelectRegion.Items.Count < 0) return;
+            AddChartPopulation(comboBoxSelectRegion.Text);
+        }
+
+        private void buttonForecastPopulation_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
