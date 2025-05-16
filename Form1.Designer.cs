@@ -27,20 +27,20 @@
         private void InitializeComponent()
         {
             this.Consumer_spending_button = new System.Windows.Forms.Button();
+            this.buttonPopulation = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Consumer_spending_button
             // 
-            this.Consumer_spending_button.Location = new System.Drawing.Point(263, 266);
+            this.Consumer_spending_button.BackColor = System.Drawing.Color.SteelBlue;
+            this.Consumer_spending_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.98507F);
+            this.Consumer_spending_button.Location = new System.Drawing.Point(309, 240);
             this.Consumer_spending_button.Name = "Consumer_spending_button";
-            this.Consumer_spending_button.Size = new System.Drawing.Size(255, 105);
+            this.Consumer_spending_button.Size = new System.Drawing.Size(188, 117);
             this.Consumer_spending_button.TabIndex = 0;
-            this.Consumer_spending_button.Text = "Consumer spending";
-            this.Consumer_spending_button.UseVisualStyleBackColor = true;
+            this.Consumer_spending_button.Text = "Посмотреть расходы пользователя";
+            this.Consumer_spending_button.UseVisualStyleBackColor = false;
             this.Consumer_spending_button.Click += new System.EventHandler(this.Consumer_spending_button_Click);
-            
-            this.buttonPopulation = new System.Windows.Forms.Button();
-            this.SuspendLayout();
             // 
             // buttonPopulation
             // 
@@ -54,7 +54,6 @@
             this.buttonPopulation.Text = "Посмотреть численность населения";
             this.buttonPopulation.UseVisualStyleBackColor = false;
             this.buttonPopulation.Click += new System.EventHandler(this.buttonPopulation_Click);
-
             // 
             // Form1
             // 
