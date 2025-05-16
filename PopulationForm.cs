@@ -97,5 +97,11 @@ namespace TP_Lab3 {
                 }
             }
         }
+
+        private void buttonPredictPopulation_Click(object sender, EventArgs e)
+        {
+            if (numericUpDownPredict.Value < 0) return;
+            
+        }
     }
 }

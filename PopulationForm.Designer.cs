@@ -26,18 +26,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.buttonOpenFile = new System.Windows.Forms.Button();
             this.PopylationGrid = new System.Windows.Forms.DataGridView();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartPopularion = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.labelMaxReductionPopulation = new System.Windows.Forms.Label();
             this.labelMinReductionPopulation = new System.Windows.Forms.Label();
             this.buttonPredictPopulation = new System.Windows.Forms.Button();
             this.numericUpDownPredict = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.PopylationGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPopularion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPredict)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,21 +63,21 @@
             this.PopylationGrid.Size = new System.Drawing.Size(346, 301);
             this.PopylationGrid.TabIndex = 1;
             // 
-            // chart1
+            // chartPopularion
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
-            this.chart1.Location = new System.Drawing.Point(415, 75);
-            this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(493, 300);
-            this.chart1.TabIndex = 2;
-            this.chart1.Text = "chart1";
+            chartArea2.Name = "ChartArea1";
+            this.chartPopularion.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartPopularion.Legends.Add(legend2);
+            this.chartPopularion.Location = new System.Drawing.Point(415, 75);
+            this.chartPopularion.Name = "chartPopularion";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartPopularion.Series.Add(series2);
+            this.chartPopularion.Size = new System.Drawing.Size(493, 300);
+            this.chartPopularion.TabIndex = 2;
+            this.chartPopularion.Text = "chart1";
             // 
             // labelMaxReductionPopulation
             // 
@@ -108,6 +108,7 @@
             this.buttonPredictPopulation.TabIndex = 5;
             this.buttonPredictPopulation.Text = "Прогнозировать на";
             this.buttonPredictPopulation.UseVisualStyleBackColor = true;
+            this.buttonPredictPopulation.Click += new System.EventHandler(this.buttonPredictPopulation_Click);
             // 
             // numericUpDownPredict
             // 
@@ -127,13 +128,13 @@
             this.Controls.Add(this.buttonPredictPopulation);
             this.Controls.Add(this.labelMinReductionPopulation);
             this.Controls.Add(this.labelMaxReductionPopulation);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.chartPopularion);
             this.Controls.Add(this.PopylationGrid);
             this.Controls.Add(this.buttonOpenFile);
             this.Name = "PopulationForm";
             this.Text = "PopulationForm";
             ((System.ComponentModel.ISupportInitialize)(this.PopylationGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPopularion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPredict)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -144,7 +145,7 @@
 
         private System.Windows.Forms.Button buttonOpenFile;
         private System.Windows.Forms.DataGridView PopylationGrid;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartPopularion;
         private System.Windows.Forms.Label labelMaxReductionPopulation;
         private System.Windows.Forms.Label labelMinReductionPopulation;
         private System.Windows.Forms.Button buttonPredictPopulation;
