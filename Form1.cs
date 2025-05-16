@@ -15,6 +15,11 @@ namespace TP_Lab3 {
             InitializeComponent();
         }
 
+        private void Consumer_spending_button_Click(object sender, EventArgs e)
+        {
+            Consumer_spending_Form consumer_Spending_Form = new Consumer_spending_Form();
+            consumer_Spending_Form.Show();
+  
         private void buttonPopulation_Click(object sender, EventArgs e)
         {
             Form form = new PopulationForm();

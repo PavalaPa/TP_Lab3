@@ -26,6 +26,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Consumer_spending_button = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // Consumer_spending_button
+            // 
+            this.Consumer_spending_button.Location = new System.Drawing.Point(263, 266);
+            this.Consumer_spending_button.Name = "Consumer_spending_button";
+            this.Consumer_spending_button.Size = new System.Drawing.Size(255, 105);
+            this.Consumer_spending_button.TabIndex = 0;
+            this.Consumer_spending_button.Text = "Consumer spending";
+            this.Consumer_spending_button.UseVisualStyleBackColor = true;
+            this.Consumer_spending_button.Click += new System.EventHandler(this.Consumer_spending_button_Click);
+            
             this.buttonPopulation = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -41,6 +54,7 @@
             this.buttonPopulation.Text = "Посмотреть численность населения";
             this.buttonPopulation.UseVisualStyleBackColor = false;
             this.buttonPopulation.Click += new System.EventHandler(this.buttonPopulation_Click);
+
             // 
             // Form1
             // 
@@ -48,6 +62,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Consumer_spending_button);
             this.Controls.Add(this.buttonPopulation);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -56,8 +71,9 @@
         }
 
         #endregion
-
+        private System.Windows.Forms.Button Consumer_spending_button;
         private System.Windows.Forms.Button buttonPopulation;
+
     }
 }
 
